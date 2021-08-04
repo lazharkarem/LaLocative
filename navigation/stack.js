@@ -38,7 +38,14 @@ return (
             />
             <Stack.Screen name="Details" component={DetailsScreen} />
         </Stack.Navigator>
-        </NavigationContainer>  );
+        </NavigationContainer>
+        );
+
     };
 
-export default MyStack;
+
+
+
+
+
+export default { MyStack };
