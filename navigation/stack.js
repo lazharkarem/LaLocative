@@ -13,8 +13,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
 
 } from 'react-native';
-import HomeScreen from '../App';
-import DetailsScreen from '../App';
+import HomeScreen from '../screens/home';
+import DetailsScreen from '../screens/details';
 
 const Stack = createNativeStackNavigator();
 
