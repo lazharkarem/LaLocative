@@ -31,8 +31,8 @@ export default class App extends Component {
   render() {
       return (
         <NavigationContainer>
-      <Drawer.Navigator drawerContent={props => <DrawerContent{... props} />} >
-        <Drawer.Screen name="Welcome" component={MainTabScreen} />
+      <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+        <Drawer.Screen name=" " component={MainTabScreen} />
 
       </Drawer.Navigator>
       </NavigationContainer>

@@ -12,7 +12,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const SettingsScreen = () => {
+const SettingsScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
         <Text>Settings Screen</Text>

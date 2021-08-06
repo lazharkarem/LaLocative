@@ -18,6 +18,7 @@ target 'lalocative' do
   end
 
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons';
 
   # Enables Flipper.
   #

@@ -43,17 +43,7 @@ const MyTab = () => {
         <Tab.Navigator
         screenOptions={{
             tabBarShowLabel:false,
-            style: {
-                position: 'absolute',
-                botton: 25,
-                left:20,
-                right:20,
-                elevation:0,
-                backgroundColor:'#fff',
-                borderRadius:15,
-                height:90,
-                ... styles.shadow,
-            },
+            headerShown: false,
         }}
         >
         <Tab.Screen name="Home" component={HomeScreen} options={{
@@ -77,7 +67,7 @@ const MyTab = () => {
             tabBarIcon:({focused})=>(
                 <View style={{alignItems:'center', justifyContent:'center',top:10}} >
                     <Image
-                    source={require('../assets/icons/home.png')}
+                    source={require('../assets/icons/details.png')}
                     resizeMode="contain"
                     style={{
                         width:25,
