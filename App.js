@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 /**
  * Sample React Native App
@@ -11,13 +12,31 @@ import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 // import MyStack from './navigation/stack';
 import MyTab from './navigation/tab';
+import MyDrawer from './navigation/drawer';
+import HomeScreen from './screens/home';
+import { DrawerContent } from './screens/drawerContent';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
+
+import { NavigationContainer } from '@react-navigation/native';
+import DetailsScreen from './screens/details';
+import MainTabScreen from './screens/mainTabScreen';
+
+
+
+const Drawer = createDrawerNavigator();
 
 export default class App extends Component {
 
   render() {
       return (
-          <MyTab/>
+        <NavigationContainer>
+      <Drawer.Navigator drawerContent={props => <DrawerContent{... props} />} >
+        <Drawer.Screen name="Welcome" component={MainTabScreen} />
+
+      </Drawer.Navigator>
+      </NavigationContainer>
+
 
 
       );
