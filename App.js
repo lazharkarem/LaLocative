@@ -21,6 +21,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import DetailsScreen from './screens/details';
 import MainTabScreen from './screens/mainTabScreen';
+import RootStackScreen from './screens/RootStackScreen';
+
 
 
 
@@ -31,10 +33,13 @@ export default class App extends Component {
   render() {
       return (
         <NavigationContainer>
-      <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-        <Drawer.Screen name=" " component={MainTabScreen} />
+          <RootStackScreen/>
 
-      </Drawer.Navigator>
+      {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+        <Drawer.Screen name=" " component={MainTabScreen} />
+      </Drawer.Navigator> */}
+
+
       </NavigationContainer>
 
 
