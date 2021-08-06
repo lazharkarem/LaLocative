@@ -18,12 +18,8 @@ import {
     DrawerContentScrollView,
     DrawerItem,
 } from '@react-navigation/drawer';
-
-
-
-
-
-
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {MaterialIcon} from './Icons';
 
 const styles = StyleSheet.create({
     drawerContent: {
@@ -79,7 +75,7 @@ export function DrawerContent(props){
     const [isDarkTheme, setInDarkTheme] = React.useState(false);
     const toggleTheme = () => {
     setInDarkTheme(!isDarkTheme);
-    }
+    };
 
     return (
         <View style={{flex:1}} >
@@ -112,28 +108,63 @@ export function DrawerContent(props){
 
                     <Drawer.Section style={styles.drawerSection}>
                     <DrawerItem
+                        icon={({color}) => (
+                            <MaterialIcon
+                            name="home-outline"
+                            color={color}
+                            size= {'medium'}
+                            />
+                        )}
                     label="Home"
-                    onPress={() => {props.navigation.navigate('Home')}}
+                    onPress={() => {props.navigation.navigate('Home');}}
                     />
                     <DrawerItem
+                    icon={({color}) => (
+                        <MaterialIcon
+                        name="account-outline"
+                        color={color}
+                        size= {'medium'}
+                        />
+                    )}
                     label="Profile"
-                    onPress={() => {props.navigation.navigate('Profile')}}
+                    onPress={() => {props.navigation.navigate('Profile');}}
                     />
                     <DrawerItem
+                    icon={({color}) => (
+                        <MaterialIcon
+                        name="account-check-outline"
+                        color={color}
+                        size= {'medium'}
+                        />
+                    )}
                     label="Details"
-                    onPress={() => {props.navigation.navigate('Details')}}
+                    onPress={() => {props.navigation.navigate('Details');}}
                     />
                     <DrawerItem
+                    icon={({color}) => (
+                        <MaterialIcon
+                        name="bookmark-outline"
+                        color={color}
+                        size= {'medium'}
+                        />
+                    )}
                     label="Post"
-                    onPress={() => {props.navigation.navigate('Post')}}
+                    onPress={() => {props.navigation.navigate('Post');}}
                     />
                     <DrawerItem
+                    icon={({color}) => (
+                        <MaterialIcon
+                        name="cogs"
+                        color={color}
+                        size= {'medium'}
+                        />
+                    )}
                     label="Settings"
-                    onPress={() => {props.navigation.navigate('Settings')}}
+                    onPress={() => {props.navigation.navigate('Settings');}}
                     />
                     </Drawer.Section>
                     <Drawer.Section title="Preferences">
-                        <TouchableRipple onPress={() =>{toggleTheme()}}>
+                        <TouchableRipple onPress={() =>{toggleTheme();}}>
                             <View style={styles.preference}>
                                 <Text>Dark Theme</Text>
                                 <View pointerEvents="none" >
@@ -147,8 +178,15 @@ export function DrawerContent(props){
             </DrawerContentScrollView>
             <Drawer.Section style={styles.bottomDrawerSection} >
             <DrawerItem
-                    label="Sign Out"
-                    onPress={() => {}}
+            icon={({color}) => (
+                <MaterialIcon
+                name="exit-to-app"
+                color={color}
+                size= {'medium'}
+                />
+            )}
+                label="Sign Out"
+                onPress={() => {}}
                 />
 
             </Drawer.Section>
