@@ -15,15 +15,14 @@ Button,
 } from 'react-native';
 
 const DetailsScreen = ({navigation}) => {
-return (
+    return (
     // eslint-disable-next-line react-native/no-inline-styles
 <View style={{flex: 1, alignItems:'center',justifyContent:'center'}}>
 <Text>Details Screen</Text>
 
-        <Button title="Go To Home Screen"
-        onPress={() => navigation.navigate('Home')}
+    <Button title="Go To Home Screen"
+    onPress={() => navigation.navigate('Home')}
 />
-
 </View>
 );
 };
