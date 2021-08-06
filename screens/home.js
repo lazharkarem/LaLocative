@@ -1,4 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
+
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -18,7 +20,6 @@ Button,
 
 const HomeScreen = ({navigation}) => {
 return (
-    // eslint-disable-next-line react-native/no-inline-styles
     <View style={{flex: 1,alignItems:'center',justifyContent:'center'}}>
     <Text>Home Screen</Text>
     <Button title="Go To Details Screen"
