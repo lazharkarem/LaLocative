@@ -30,6 +30,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
 
+import { AuthContext } from '../components/context';
+
+
+
 
 
 const SignInScreen = ({navigation}) => {
@@ -40,6 +44,8 @@ const SignInScreen = ({navigation}) => {
         check_textInputChange:false,
         secureTextEntry:true,
     });
+
+    const {signIn} = React.useContext(AuthContext);
 
     const textInputChange = (val)=>{
         if (val !== 0 ) {
@@ -137,11 +143,21 @@ const SignInScreen = ({navigation}) => {
                         />}
                     </TouchableOpacity>
                 </View>
+                <TouchableOpacity>
+                    <Text style={{color:'#009387', marginTop:15}}>Forgot Password</Text>
+                </TouchableOpacity>
                 <View style={styles.Button}>
-                    <LinearGradient colors={['#08d4c4', '#01ab9d']} style={styles.signIn}>
+                    <TouchableOpacity
+                    style={styles.signIn}
+                    onPress={()=>{signIn();}}
+                    >
+                    <LinearGradient
+                    colors={['#08d4c4', '#01ab9d']}
+                    style={styles.signIn}
+                    >
                         <Text style={[styles.textSign, {color:'#fff'}]} >Sign In</Text>
                     </LinearGradient>
-
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={()=>navigation.navigate('SignUpScreen')}
                     style={[styles.signIn,
                             {borderColor:'#009387',
