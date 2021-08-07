@@ -20,6 +20,8 @@ import {
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {MaterialIcon} from './Icons';
+import { AuthContext } from '../components/context';
+
 
 const styles = StyleSheet.create({
     drawerContent: {
@@ -76,6 +78,8 @@ export function DrawerContent(props){
     const toggleTheme = () => {
     setInDarkTheme(!isDarkTheme);
     };
+
+    const {signOut} = React.useContext(AuthContext);
 
     return (
         <View style={{flex:1}} >
@@ -186,7 +190,7 @@ export function DrawerContent(props){
                 />
             )}
                 label="Sign Out"
-                onPress={() => {}}
+                onPress={() => {signOut()}}
                 />
 
             </Drawer.Section>
