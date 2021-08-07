@@ -32,7 +32,7 @@ const SplashScreen = ({navigation}) => {
         <StatusBar backgroundColor="#009387" barStyle="light-content"/>
         <View style={styles.header}>
             <Animatable.Image
-                animation="bounceIn"
+                animation="lightSpeedIn"
                 duraton="1500"
             source={require('../assets/logo.png')}
             style={styles.logo}
@@ -55,7 +55,8 @@ const SplashScreen = ({navigation}) => {
                     colors={['#08d4c4', '#01ab9d']}
                     style={styles.signIn}
                 >
-                    <Text style={styles.textSign}>Get Started</Text>
+                    <Text
+                    style={styles.textSign}>Get Started</Text>
                     <MaterialIcon
                         name="arrow-right"
                         color="#fff"
