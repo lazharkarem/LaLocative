@@ -34,7 +34,7 @@ import Feather from 'react-native-vector-icons/Feather';
 
 const SignInScreen = ({navigation}) => {
 
-    const [data, setData]= React.useState({
+    const [data, setData] = React.useState({
         email: '',
         password: '',
         check_textInputChange:false,
@@ -57,14 +57,32 @@ const SignInScreen = ({navigation}) => {
         }
 
         };
-    
+
+        const handlePasswordChange = (val) => {
+            setData({
+                ...data,
+                password: val,
+            });
+        };
+
+        const updateSecureTextEntry = ()=>{
+            setData({
+                ...data,
+                secureTextEntry: !data.secureTextEntry,
+            });
+        };
+
 
     return (
         <View style={styles.container} >
+            <StatusBar backgroundColor="#009387" barStyle="light-content" />
             <View style={styles.header}>
                 <Text style={styles.text_header} >Welcome!</Text>
             </View>
-            <View style={styles.footer}>
+            <Animatable.View
+                animation="fadeInUpBig"
+                style={styles.footer}
+            >
                 <Text style={styles.text_footer}>Email</Text>
                 <View style={styles.action}>
                     <MaterialIcon
@@ -73,17 +91,21 @@ const SignInScreen = ({navigation}) => {
                     size={'large'}
                     />
                     <TextInput
+                    autoCorrect={false}
                     placeholder="Your Email"
                     style={styles.textInput}
                     autoCapitalize="none"
                     onChangeText={(val)=>textInputChange(val)}
                     />
                     {data.check_textInputChange ?
+                    <Animatable.View animation="bounceIn">
+
                     <MaterialIcon
                     name="check-circle-outline"
                     color="green"
                     size="large"
                     />
+                    </Animatable.View>
                     : null}
                 </View>
                 <Text style={[styles.text_footer, {marginTop:35} ]}>Password</Text>
@@ -97,15 +119,41 @@ const SignInScreen = ({navigation}) => {
                     placeholder="Your Password"
                     style={styles.textInput}
                     autoCapitalize="none"
-                    secureTextEntry={true}
+                    secureTextEntry={data.secureTextEntry ? true : false}
+                    onChangeText={(val)=>handlePasswordChange(val)}
                     />
-                    <MaterialIcon
-                    name="eye-off"
-                    color="grey"
-                    size="large"
-                    />
+                    <TouchableOpacity onPress={updateSecureTextEntry}>
+                        {data.secureTextEntry ?
+                        <MaterialIcon
+                        name="eye-off"
+                        color="grey"
+                        size="large"
+                        />
+                        :
+                        <MaterialIcon
+                        name="eye-outline"
+                        color="grey"
+                        size="large"
+                        />}
+                    </TouchableOpacity>
                 </View>
-            </View>
+                <View style={styles.Button}>
+                    <LinearGradient colors={['#08d4c4', '#01ab9d']} style={styles.signIn}>
+                        <Text style={[styles.textSign, {color:'#fff'}]} >Sign In</Text>
+                    </LinearGradient>
+
+                    <TouchableOpacity onPress={()=>navigation.navigate('SignUpScreen')}
+                    style={[styles.signIn,
+                            {borderColor:'#009387',
+                            borderWidth:1,
+                            marginTop:15}]}>
+                        <Text style={[styles.textSign,{
+                                        color:'#009387',
+                        }]}>Sign Up</Text>
+                    </TouchableOpacity>
+
+                </View>
+            </Animatable.View>
 
         </View>
     );
