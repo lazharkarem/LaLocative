@@ -1,4 +1,4 @@
-/* eslint-disable no-alert */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 
@@ -23,18 +23,90 @@ import {
     Button,
 } from 'react-native';
 
+import * as Animatable from 'react-native-animatable';
+import LinearGradient from 'react-native-linear-gradient';
+import {MaterialIcon} from './Icons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
+
 
 
 
 const SignInScreen = ({navigation}) => {
 
+    const [data, setData]= React.useState({
+        email: '',
+        password: '',
+        check_textInputChange:false,
+        secureTextEntry:true,
+    });
+
+    const textInputChange = (val)=>{
+        if (val !== 0 ) {
+            setData({
+                ...data,
+                email:val,
+                check_textInputChange: true,
+            });
+        } else {
+            setData({
+                ...data,
+                email:val,
+                check_textInputChange: false,
+            });
+        }
+
+        };
+    
+
     return (
         <View style={styles.container} >
-            <Text>SignIn Screen</Text>
-            <Button
-            title="Click here"
-            onPress={() => alert('Button Clicked')}
-            />
+            <View style={styles.header}>
+                <Text style={styles.text_header} >Welcome!</Text>
+            </View>
+            <View style={styles.footer}>
+                <Text style={styles.text_footer}>Email</Text>
+                <View style={styles.action}>
+                    <MaterialIcon
+                    name="account-outline"
+                    color="#05375a"
+                    size={'large'}
+                    />
+                    <TextInput
+                    placeholder="Your Email"
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    onChangeText={(val)=>textInputChange(val)}
+                    />
+                    {data.check_textInputChange ?
+                    <MaterialIcon
+                    name="check-circle-outline"
+                    color="green"
+                    size="large"
+                    />
+                    : null}
+                </View>
+                <Text style={[styles.text_footer, {marginTop:35} ]}>Password</Text>
+                <View style={styles.action}>
+                    <MaterialIcon
+                    name="lock-outline"
+                    color="#05375a"
+                    size={'large'}
+                    />
+                    <TextInput
+                    placeholder="Your Password"
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    secureTextEntry={true}
+                    />
+                    <MaterialIcon
+                    name="eye-off"
+                    color="grey"
+                    size="large"
+                    />
+                </View>
+            </View>
+
         </View>
     );
 };
@@ -85,7 +157,7 @@ const styles = StyleSheet.create({
     },
     textInput: {
         flex: 1,
-        marginTop: Platform.OS === 'ios' ? 0 : -12,
+        marginTop: Platform.OS === 'ios' ? 0 : -14,
         paddingLeft: 10,
         color: '#05375a',
     },
