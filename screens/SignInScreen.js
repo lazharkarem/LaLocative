@@ -32,6 +32,8 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import { AuthContext } from '../components/context';
 import Users from '../model/users';
+import { useTheme } from '@react-navigation/native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 
@@ -39,6 +41,8 @@ import Users from '../model/users';
 
 
 const SignInScreen = ({navigation}) => {
+
+    const { colors } = useTheme();
 
     const [data, setData] = React.useState({
         username: '',
@@ -141,22 +145,29 @@ const SignInScreen = ({navigation}) => {
             </View>
             <Animatable.View
                 animation="fadeInUpBig"
-                style={styles.footer}
+                style={[styles.footer, {
+                    backgroundColor: colors.background,
+                }]}
             >
-                <Text style={styles.text_footer}>Email</Text>
+                <Text
+                style={[styles.text_footer, {
+                    color: colors.text,
+                }]}
+                >Email</Text>
                 <View style={styles.action}>
                     <MaterialIcon
                     name="account-outline"
-                    color="#05375a"
+                    color={colors.text}
                     size={'large'}
                     />
                     <TextInput
                     autoCorrect={false}
                     placeholder="Your Email"
-                    style={styles.textInput}
+                    style={[styles.textInput , {color: colors.text}]}
                     autoCapitalize="none"
                     onChangeText={(val)=>textInputChange(val)}
                     onEndEditing={(e)=>handleValidUser(e.nativeEvent.text)}
+
                     />
                     {data.check_textInputChange ?
                     <Animatable.View animation="bounceIn">
@@ -174,16 +185,16 @@ const SignInScreen = ({navigation}) => {
                 <Text style={styles.errorMsg}>Username must 4 Chars lenght.</Text>
                 </Animatable.View>
                     }
-                    <Text style={[styles.text_footer, {marginTop:35} ]}>Password</Text>
+                    <Text style={[styles.text_footer, {marginTop:35}, {color: colors.text} ]}>Password</Text>
                 <View style={styles.action}>
                     <MaterialIcon
                     name="lock-outline"
-                    color="#05375a"
+                    color={colors.text}
                     size={'large'}
                     />
                     <TextInput
                     placeholder="Your Password"
-                    style={styles.textInput}
+                    style={[styles.textInput, {color: colors.text}]}
                     autoCapitalize="none"
                     secureTextEntry={data.secureTextEntry ? true : false}
                     onChangeText={(val)=>handlePasswordChange(val)}
@@ -218,7 +229,7 @@ const SignInScreen = ({navigation}) => {
                     >
                     <LinearGradient
                     colors={['#08d4c4', '#01ab9d']}
-                    style={styles.signIn}
+                    style={[styles.signIn, {marginTop:300}]}
                     >
                         <Text style={[styles.textSign, {color:'#fff'}]} >Sign In</Text>
                     </LinearGradient>
@@ -227,7 +238,7 @@ const SignInScreen = ({navigation}) => {
                     style={[styles.signIn,
                             {borderColor:'#009387',
                             borderWidth:1,
-                            marginTop:15}]}>
+                            marginTop:180}]}>
                         <Text style={[styles.textSign,{
                                         color:'#009387',
                         }]}>Sign Up</Text>
@@ -235,7 +246,6 @@ const SignInScreen = ({navigation}) => {
 
                 </View>
             </Animatable.View>
-
         </View>
     );
 };

@@ -24,6 +24,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {MaterialIcon} from './Icons';
 import { useTheme } from '@react-navigation/native';
 
+
+
 const SplashScreen = ({navigation}) => {
     const { colors } = useTheme();
 
