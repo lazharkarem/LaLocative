@@ -12,6 +12,9 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import  { StyleSheet, Text, View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import {MaterialIcon} from '../screens/Icons';
+
 import HomeScreen from '../screens/home';
 import DetailsScreen from '../screens/details';
 import SettingsScreen from '../screens/settings';
@@ -37,14 +40,14 @@ const Tab = createBottomTabNavigator();
 
 
 
-const MyTab = () => {
 
-    return (
-        // <NavigationContainer>
+const MyTab = () => (
+
         <Tab.Navigator
         screenOptions={{
             tabBarShowLabel:false,
             headerShown: false,
+            activeColor : '#fff',
         }}
         >
         <Tab.Screen name="Home" component={HomeScreen} options={{
@@ -133,12 +136,7 @@ const MyTab = () => {
         }}
         />
         </Tab.Navigator>
-        // </NavigationContainer>
 
-
-    );
-
-
-};
-
+);
 export default MyTab;
+

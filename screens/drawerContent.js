@@ -70,16 +70,10 @@ const styles = StyleSheet.create({
 });
 
 
-
-
 export function DrawerContent(props){
 
-    const [isDarkTheme, setInDarkTheme] = React.useState(false);
-    const toggleTheme = () => {
-    setInDarkTheme(!isDarkTheme);
-    };
-
-    const {signOut} = React.useContext(AuthContext);
+    const {signOut, toggleTheme} = React.useContext(AuthContext);
+    const paperTheme = useTheme();
 
     return (
         <View style={{flex:1}} >
@@ -94,18 +88,18 @@ export function DrawerContent(props){
                             size={50}
                             />
                             <View style={{marginLeft:15,flexDirection:'column'}}>
-                                <Title style={styles.title} >Full Name</Title>
-                                <Caption style={styles.caption}>@username</Caption>
+                                <Title style={styles.title} >Karem Lazhar</Title>
+                                <Caption style={styles.caption}>@karemlazhar</Caption>
                             </View>
                         </View>
                         <View style={styles.row}>
                             <View style={styles.section}>
                                 <Paragraph style={[styles.paragraph,styles.caption]} >80</Paragraph>
-                                <Caption style={styles.caption}>Following</Caption>
+                                <Caption style={styles.caption}>Res</Caption>
                             </View>
                             <View style={styles.section}>
                                 <Paragraph style={[styles.paragraph,styles.caption]} >100</Paragraph>
-                                <Caption style={styles.caption}>Followers</Caption>
+                                <Caption style={styles.caption}>Dep</Caption>
                             </View>
                             </View>
                     </View>
@@ -172,7 +166,7 @@ export function DrawerContent(props){
                             <View style={styles.preference}>
                                 <Text>Dark Theme</Text>
                                 <View pointerEvents="none" >
-                                <Switch value={isDarkTheme}/>
+                                <Switch value={paperTheme.dark}/>
                                 </View>
                             </View>
                         </TouchableRipple>
@@ -190,7 +184,7 @@ export function DrawerContent(props){
                 />
             )}
                 label="Sign Out"
-                onPress={() => {signOut()}}
+                onPress={() => {signOut();}}
                 />
 
             </Drawer.Section>
