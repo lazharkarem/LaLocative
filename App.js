@@ -45,33 +45,100 @@ const Drawer = createDrawerNavigator();
 
   const App = () => {
 
-    const [isLoading, setIsLoading] = React.useState(true);
-    const [userToken, setUserToken] = React.useState(null);
+    // const [isLoading, setIsLoading] = React.useState(true);
+    // const [userToken, setUserToken] = React.useState(null);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const initialLoginState = {
+      isLoading: true,
+      userName:null,
+      userToken:null,
+    };
+
+    const loginReducer = (prevState, action)=>{
+      switch (action.type) {
+        case 'RETRIEVE_TOKEN':
+          return {
+            ... prevState,
+            isLoading:false,
+          };
+        case 'LOGIN':
+          return {
+            ... prevState,
+            userName: action.id,
+            userToken:action.token,
+            isLoading:false,
+          };
+        case 'LOGOUT':
+          return {
+            ... prevState,
+            userName: null,
+            userToken: null,
+            isLoading:false,
+          };
+        case 'REGISTER':
+          return {
+            ... prevState,
+            userName: action.id,
+            userToken:action.token,
+            isLoading:false,
+          };
+      }
+    };
+
+    const [loginState, dispatch] = React.useReducer(loginReducer,initialLoginState);
+
+
     const authContext = React.useMemo(()=>({
-      signIn:()=>{
-        setUserToken('fgkj');
-        setIsLoading(false);
+      signIn: async(userName,password)=>{
+        let userToken;
+        userToken = null;
+        if (userName === 'user' && password === 'pass'){
+          try {
+            userToken = 'efgh';
+            await AsyncStorage.setItem('userToken',userToken);
+          }
+          catch (e) {
+            console.log(e);
+          }
+        }
+        console.log('user token = ', userToken);
+        dispatch({type: 'LOGIN', id:userName, token: userToken});
       },
-      signOut:()=>{
-        setUserToken(null);
-        setIsLoading(false);
+      signOut: async()=>{
+        // setUserToken(null);
+        // setIsLoading(false);
+        try {
+          await AsyncStorage.removeItem('userToken');
+        } catch (e) {
+          console.log(e);
+        }
+        dispatch({type: 'LOGOUT'});
       },
       signUp:()=>{
-        setUserToken('fgkj');
-        setIsLoading(false);
+        // setUserToken('fgkj');
+        // setIsLoading(false);
+
       },
 
-    }));
+    }),[]);
 
     useEffect(() => {
-      setTimeout(()=>{
-        setIsLoading(false);
+      setTimeout(async()=>{
+        // setIsLoading (false);
+        let userToken;
+        userToken = null;
+        try {
+          userToken = await AsyncStorage.getItem('userToken');
+        }
+        catch (e) {
+          console.log(e);
+        }
+        // console.log('user token = ', userToken);
+        dispatch({type: 'REGISTER', token: userToken});
       }, 1000);
 
     },[]);
-    if (isLoading) {
+    if (loginState.isLoading) {
       return (
         <View style={{flex: 1, justifyContent:'center', alignItems:'center'}} >
           <ActivityIndicator size="large"/>
@@ -84,7 +151,7 @@ const Drawer = createDrawerNavigator();
       <AuthContext.Provider value={authContext}>
 
       <NavigationContainer>
-        {userToken !== null ? (
+        {loginState.userToken !== null ? (
 
           <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
           <Drawer.Screen name=" " component={MainTabScreen} />
