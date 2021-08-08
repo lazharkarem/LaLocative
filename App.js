@@ -39,6 +39,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 
 
+
 const Drawer = createDrawerNavigator();
 
 
@@ -89,19 +90,17 @@ const Drawer = createDrawerNavigator();
 
 
     const authContext = React.useMemo(()=>({
-      signIn: async(userName,password)=>{
-        let userToken;
-        userToken = null;
-        if (userName === 'user' && password === 'pass'){
+      signIn: async(foundUser)=>{
+        const userToken = String(foundUser[0].userToken);
+        const userName = foundUser[0].username;
+
           try {
-            userToken = 'efgh';
             await AsyncStorage.setItem('userToken',userToken);
           }
           catch (e) {
             console.log(e);
           }
-        }
-        console.log('user token = ', userToken);
+
         dispatch({type: 'LOGIN', id:userName, token: userToken});
       },
       signOut: async()=>{
