@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   userInfoSection:{
     paddingHorizontal: 60,
-    marginBottom: 15,
+    marginBottom: 1,
   },
   title: {
     fontSize: 24,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
   row:{
     flexDirection:'row',
-    marginBottom:10,
+    marginBottom:5,
     marginLeft:90,
   },
   infoBoxWrapper:{
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     borderTopColor:'#dddddd',
     borderTopWidth:1,
     flexDirection:'row',
-    height:100,
+    height:60,
   },
   infoBox: {
     width:'50%',
@@ -146,8 +146,8 @@ const styles = StyleSheet.create({
   },
   menuItem:{
     flexDirection:'row',
-    paddingVertical:15,
-    paddingHorizontal:30,
+    paddingVertical:10,
+    paddingHorizontal:20,
   },
   menuItemText:{
     color:'#777777',

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 /**
@@ -154,7 +153,6 @@ const Drawer = createDrawerNavigator();
     }
     return (
       <PaperProvider theme={theme}>
-
       <AuthContext.Provider value={authContext}>
       <NavigationContainer theme={theme} >
         {loginState.userToken !== null ? (
