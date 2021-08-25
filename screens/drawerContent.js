@@ -18,7 +18,6 @@ import {
     DrawerContentScrollView,
     DrawerItem,
 } from '@react-navigation/drawer';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {MaterialIcon} from './Icons';
 import { AuthContext } from '../components/context';
 

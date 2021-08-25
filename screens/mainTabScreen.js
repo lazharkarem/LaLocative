@@ -7,7 +7,7 @@
  *
  * @format
  * @flow strict-local
- */
+*/
 import 'react-native-gesture-handler';
 import React from 'react';
 import  { Text, View, Image } from 'react-native';
@@ -20,7 +20,13 @@ import DetailsScreen from '../screens/details';
 import SettingsScreen from '../screens/settings';
 import PostScreen from '../screens/post';
 
+
+
 const Tab = createBottomTabNavigator();
+
+
+
+
 
 const MainTabScreen = () => (
     <Tab.Navigator
